@@ -18,7 +18,7 @@ public class EnemyScript : MonoBehaviour, IEnemy
     private Animator anim;
     private float rotationSpeed = 300f;
     private bool playerSeen;
-    private bool playerCaught;
+    public static bool playerCaught;
     private bool distracted;
     public float distractedTime = 10f;
     private Vector2 movementDirection;
@@ -36,6 +36,7 @@ public class EnemyScript : MonoBehaviour, IEnemy
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+        playerCaught = false;
 
 
         player = GameObject.FindWithTag("Player");
@@ -159,6 +160,6 @@ public class EnemyScript : MonoBehaviour, IEnemy
     public void Caught()
     {
         playerCaught = true;
-        Debug.Log("Player Caught");
+        //Debug.Log("Player Caught");
     }
 }

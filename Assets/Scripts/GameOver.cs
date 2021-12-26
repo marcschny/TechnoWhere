@@ -10,6 +10,7 @@ public class GameOver : MonoBehaviour
     //void OnEnable(){ //gets called everytime a GO gets enabled (not like Start())
     //    roundsText.text = PlayerStats.Rounds.ToString();
     //}
+    
 
     public void RetryGame(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); //restart scene
@@ -20,4 +21,6 @@ public class GameOver : MonoBehaviour
         Debug.Log("Quit Game!");
         Application.Quit();
     }
+    
+    
 }

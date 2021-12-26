@@ -26,6 +26,7 @@ public class PlayerScript : MonoBehaviour
 
     private float rotationSpeed = 300f;
 
+    //boost
     private float startBoostTime = 0f;
     public static float defaultBoostTime;
     private float boostTime;
@@ -37,7 +38,7 @@ public class PlayerScript : MonoBehaviour
     public bool caught;
 
 
-    public static bool partyFound; //TODO: remove this line
+    private bool partyFound; //TODO: remove this line
 
     public static bool hasEnergyDrink;
 
@@ -141,11 +142,16 @@ public class PlayerScript : MonoBehaviour
 
     private void Move()
     {
-        rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+        
+        //only if mouse is not over a ui element (e.g pause menu)
+        if (!EventSystem.current.IsPointerOverGameObject())
+        {
+            rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
 
-        Vector2 lookDir = mousePos - rb.position;
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-        rb.rotation = angle;
+            Vector2 lookDir = mousePos - rb.position;
+            float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+            rb.rotation = angle;
+        }
     }
 
 
@@ -203,7 +209,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Finish"))
         {
-            partyFound = true; //TODO: remove this line
+            partyFound = true;
             Debug.Log("Party found.");
         }
 
