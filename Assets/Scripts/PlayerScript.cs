@@ -93,7 +93,12 @@ public class PlayerScript : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1") && glowStickCount > 0)
         {
-            ThrowLightStick();
+            //only if mouse is not over a ui element (e.g pause menu)
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+                ThrowLightStick();
+            }
+
         }
 
         if (Input.GetButtonDown("Fire2"))
