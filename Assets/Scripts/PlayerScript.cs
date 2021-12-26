@@ -38,7 +38,7 @@ public class PlayerScript : MonoBehaviour
     public bool caught;
 
 
-    private bool partyFound; //TODO: remove this line
+    private bool partyFound;
 
     public static bool hasEnergyDrink;
 
@@ -60,6 +60,7 @@ public class PlayerScript : MonoBehaviour
         defaultBoostTime = 4f;
         showProgress = false;
         partyFound = false;
+        hasEnergyDrink = false;
         anim = GetComponent<Animator>();
         target = transform.position;
         glowStickCount = 3;
@@ -142,16 +143,11 @@ public class PlayerScript : MonoBehaviour
 
     private void Move()
     {
-        
-        //only if mouse is not over a ui element (e.g pause menu)
-        if (!EventSystem.current.IsPointerOverGameObject())
-        {
             rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
 
             Vector2 lookDir = mousePos - rb.position;
             float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
             rb.rotation = angle;
-        }
     }
 
 
