@@ -51,6 +51,8 @@ public class PlayerScript : MonoBehaviour
     private GameObject globalVolume;
     private DrunkScript drunkScript;
 
+    private int collectables; //number of collectables
+
 
     //Use this for initialization
     void Start()
@@ -61,6 +63,7 @@ public class PlayerScript : MonoBehaviour
         showProgress = false;
         partyFound = false;
         hasEnergyDrink = false;
+        collectables = 0;
         anim = GetComponent<Animator>();
         target = transform.position;
         glowStickCount = 3;
@@ -225,6 +228,12 @@ public class PlayerScript : MonoBehaviour
                 hasEnergyDrink = true;
                 Destroy(other.gameObject);
             }
+        }
+
+        if (other.gameObject.CompareTag("Collectable"))
+        {
+            collectables++;
+            Destroy(other.gameObject);
         }
 
         if (other.gameObject.CompareTag("Drug"))

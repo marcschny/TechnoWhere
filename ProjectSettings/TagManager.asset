@@ -11,6 +11,7 @@ TagManager:
   - Global Volume
   - GlowStick Game
   - GlowStick Overlay
+  - Collectable
   layers:
   - Default
   - TransparentFX
