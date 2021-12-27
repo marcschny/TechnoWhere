@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     //game over 
     public static bool GameIsOver; //static to access it from outside.  = false, would equal to true, if the scenes gets started again
     public GameObject gameOverUI;
+    
+    //track played time
+    public static double timePlayed;
 
     
     //items (OverlayCanvas)
@@ -89,6 +92,7 @@ public class GameManager : MonoBehaviour
         GameIsOver = false; //to make it false each scene
         gameOverUI.SetActive(false);
         showBooster = false;
+        timePlayed = 0.0;
         boosterTime = PlayerScript.defaultBoostTime; //get booster time from playerscript
         showProgress = false;
         glowSticks = GameObject.FindGameObjectsWithTag("GlowStick Overlay");    //get glowsticks by tag
@@ -102,6 +106,9 @@ public class GameManager : MonoBehaviour
         if(GameIsOver){
             return;
         }
+        
+        //increase time played
+        timePlayed += Time.deltaTime;
         
         if(EnemyScript.playerCaught){
             EndGame();

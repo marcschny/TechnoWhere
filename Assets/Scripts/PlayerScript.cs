@@ -51,7 +51,7 @@ public class PlayerScript : MonoBehaviour
     private GameObject globalVolume;
     private DrunkScript drunkScript;
 
-    private int collectables; //number of collectables
+    public static int collectables; //number of collectables
 
 
     //Use this for initialization
