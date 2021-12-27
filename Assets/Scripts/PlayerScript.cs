@@ -38,7 +38,7 @@ public class PlayerScript : MonoBehaviour
     public bool caught;
 
 
-    private bool partyFound;
+    public static bool partyFound;
 
     public static bool hasEnergyDrink;
 
