@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -11,9 +13,19 @@ public class GameManager : MonoBehaviour
     public static bool GameIsOver; //static to access it from outside.  = false, would equal to true, if the scenes gets started again
     public GameObject gameOverUI;
     
-    //track played time
+    //party found
+    public static bool partyFound;
+    public GameObject partyFoundUI;
+    
+    //play time
+    public static int maxPlayTime = 120; //sec
+    [System.NonSerialized]
     public static double timePlayed;
-
+    
+    //game time ui
+    public TMP_Text timeText;
+    private int showMessageTime = 5;
+    
     
     //items (OverlayCanvas)
     public GameObject booster;
@@ -84,36 +96,56 @@ public class GameManager : MonoBehaviour
         }
 
     }
-    
+
+    private int timeStamp = 0;
     
     
     void Start(){
         Time.timeScale = 1f; //start game time
         GameIsOver = false; //to make it false each scene
+        partyFound = false;
         gameOverUI.SetActive(false);
-        showBooster = false;
+        partyFoundUI.SetActive(false);
+        ShowBooster = false;
         timePlayed = 0.0;
         boosterTime = PlayerScript.defaultBoostTime; //get booster time from playerscript
         showProgress = false;
         glowSticks = GameObject.FindGameObjectsWithTag("GlowStick Overlay");    //get glowsticks by tag
         noGlowSticks = glowSticks.Length;
+        
+        //start coroutine to show time related messages
+        StartCoroutine(TimeMessages());
     }
+    
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //exit if game ended
-        if(GameIsOver){
+        if(GameIsOver || partyFound){
             return;
         }
         
         //increase time played
         timePlayed += Time.deltaTime;
         
+        //if player caught
         if(EnemyScript.playerCaught){
             EndGame();
         }
-        
+
+        //if time's up
+        if (timePlayed >= maxPlayTime + 12)
+        {
+            EndGame();
+        }
+
+        //if party found
+        if (PlayerScript.partyFound)
+        {
+            PartyFound();
+        }
+
         //get hasItem and ligtStickCount from PlayerScript
         ShowBooster = PlayerScript.hasEnergyDrink;
         ShowProgress = PlayerScript.showProgress;
@@ -126,7 +158,44 @@ public class GameManager : MonoBehaviour
             progress.fillAmount = boosterTime / PlayerScript.defaultBoostTime;
         }
         
+    }
 
+    //routine for time related messages
+    private IEnumerator TimeMessages()
+    {
+        var firstMoment = maxPlayTime / 2;
+        var secondMoment = maxPlayTime / 4 - showMessageTime;
+        var thirdMoment = maxPlayTime / 8 - 2 * showMessageTime;
+        
+        timeText.enabled = false;
+        
+        //first message (at around half time)
+        yield return new WaitForSeconds(firstMoment);
+        timeText.text = "Der Rave wartet nicht die ganze Nacht auf dich...";
+        timeText.enabled = true;
+        yield return new WaitForSeconds(showMessageTime);
+        timeText.enabled = false;
+        
+        //second message (at around three-quarter)
+        yield return new WaitForSeconds(secondMoment);
+        timeText.text = "Beeil' dich, die Nacht ist bald vorbei...";
+        timeText.enabled = true;
+        yield return new WaitForSeconds(showMessageTime);
+        timeText.enabled = false;
+
+        //third message (at last 20 seconds)
+        yield return new WaitForSeconds(thirdMoment);
+        timeText.text = "Einige haben den Rave bereits verlassen...";
+        timeText.enabled = true;
+        yield return new WaitForSeconds(showMessageTime);
+        timeText.enabled = false;
+    }
+
+    void PartyFound()
+    {
+        partyFound = true;
+        partyFoundUI.SetActive(true);
+        Time.timeScale = 0f; //freeze game time
     }
 
 

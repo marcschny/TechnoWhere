@@ -12,6 +12,7 @@ TagManager:
   - GlowStick Game
   - GlowStick Overlay
   - Collectable
+  - Flickering Light
   layers:
   - Default
   - TransparentFX

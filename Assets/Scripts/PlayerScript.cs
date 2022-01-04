@@ -53,6 +53,8 @@ public class PlayerScript : MonoBehaviour
 
     public static int collectables; //number of collectables
 
+    private Light2D[] flashlights;
+
 
     //Use this for initialization
     void Start()
@@ -69,6 +71,7 @@ public class PlayerScript : MonoBehaviour
         glowStickCount = 3;
         globalVolume = GameObject.FindGameObjectWithTag("Global Volume");
         drunkScript = globalVolume.GetComponent<DrunkScript>();
+        flashlights = GetComponentsInChildren<Light2D>();
     }
 
     void Update()
@@ -146,11 +149,11 @@ public class PlayerScript : MonoBehaviour
 
     private void Move()
     {
-            rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
 
-            Vector2 lookDir = mousePos - rb.position;
-            float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-            rb.rotation = angle;
+        Vector2 lookDir = mousePos - rb.position;
+        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+        rb.rotation = angle;
     }
 
 
@@ -164,7 +167,10 @@ public class PlayerScript : MonoBehaviour
 
     private void ToggleLight()
     {
-        GetComponentInChildren<Light2D>().enabled = !GetComponentInChildren<Light2D>().enabled;
+        foreach (Light2D light in flashlights)
+        {
+            light.enabled = !light.enabled;
+        }
     }
 
     private IEnumerator SpeedBoost()
