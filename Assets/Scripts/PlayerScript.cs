@@ -61,7 +61,7 @@ public class PlayerScript : MonoBehaviour
     {
         speed = moveSpeed;
         boostTime = startBoostTime;
-        defaultBoostTime = 4f;
+        defaultBoostTime = 5.5f;
         showProgress = false;
         partyFound = false;
         hasEnergyDrink = false;
@@ -149,7 +149,7 @@ public class PlayerScript : MonoBehaviour
 
     private void Move()
     {
-        rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + movement.normalized * speed * Time.fixedDeltaTime);
 
         Vector2 lookDir = mousePos - rb.position;
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
@@ -175,7 +175,7 @@ public class PlayerScript : MonoBehaviour
 
     private IEnumerator SpeedBoost()
     {
-        speed = moveSpeed * 1.8f;
+        speed = moveSpeed * 1.9f;
         boostTime = defaultBoostTime;
         showProgress = true;
         yield return new WaitForSeconds(boostTime);

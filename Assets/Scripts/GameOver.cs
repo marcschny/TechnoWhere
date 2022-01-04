@@ -46,6 +46,7 @@ public class GameOver : MonoBehaviour
         Debug.Log("Retry Game!");
     }
 
+    
     public void QuitGame(){
         Debug.Log("Quit Game!");
         Application.Quit();

@@ -96,8 +96,6 @@ public class GameManager : MonoBehaviour
         }
 
     }
-
-    private int timeStamp = 0;
     
     
     void Start(){
@@ -146,12 +144,12 @@ public class GameManager : MonoBehaviour
             PartyFound();
         }
 
-        //get hasItem and ligtStickCount from PlayerScript
+        //get hasEnergyDrink, showProgess and glowStickCount from PlayerScript
         ShowBooster = PlayerScript.hasEnergyDrink;
         ShowProgress = PlayerScript.showProgress;
         NoGlowSticks = PlayerScript.glowStickCount;
 
-        //reduce booster progress
+        //reduce booster progress over time (if activated)
         if (showProgress)
         {
             boosterTime -= Time.deltaTime;

@@ -85,7 +85,7 @@ public class EnemyScript : MonoBehaviour, IEnemy
                 Caught();
             }
 
-            if (agent.remainingDistance > 20f &&
+            if (agent.remainingDistance > 17.5f &&
                 agent.remainingDistance <
                 1000f) // sometimes it returns infinity during the calculation, therefore an upper limit
             {

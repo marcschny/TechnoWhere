@@ -1,14 +1,12 @@
 using UnityEngine;
 using System.Collections;
 using TMPro;
-using UnityEngine.UI;
 
-// attach to UI Text component (with the full text already there)
-//from: https://unitycoder.com/blog/2015/12/03/ui-text-typewriter-effect-script/
+
 public class UITextTypeWriter : MonoBehaviour 
 {
 
-    public TMP_Text txt;
+    public TMP_Text txt;  //UI Text component (with the full text already there)
     string story;
 
     private bool startedTyping;
@@ -37,12 +35,13 @@ public class UITextTypeWriter : MonoBehaviour
     {
         if (txt.isActiveAndEnabled)
         {
-            // TODO: add optional delay when to start
+            //TODO: add optional delay when to start
             StartCoroutine ("PlayText");
             StartedTyping = true;
         }
     }
 
+    //text typing animation
     IEnumerator PlayText()
     {
         if (!startedTyping)
