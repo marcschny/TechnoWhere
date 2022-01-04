@@ -1,14 +1,14 @@
 using System.Collections;
 using UnityEngine;
 
-public class LightFlickering : MonoBehaviour
+public class PartyLight : MonoBehaviour
 {
     private GameObject [] lights;
     private bool lightOn;
  
     private void Start()
     {
-        lights = GameObject.FindGameObjectsWithTag("Flickering Light");
+        lights = GameObject.FindGameObjectsWithTag("PartyLight");
         lightOn = true;
     }
  
