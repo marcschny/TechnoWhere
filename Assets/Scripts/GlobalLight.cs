@@ -1,16 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine.Rendering.Universal;
+
 
 public class GlobalLight : MonoBehaviour
 {
-    
+    //init global light
     private UnityEngine.Rendering.Universal.Light2D globalLight;
 
+    //init intensity and color of global light
     private double startIntensity = 0.16;
-    private double maxIntensity = 0.40;
+    private double maxIntensity = 0.42;
     private double intensityDiff;
 
     private Color startColor;

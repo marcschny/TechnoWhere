@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     public GameObject partyFoundUI;
     
     //play time
-    public static int maxPlayTime = 120; //sec
+    public static int maxPlayTime = 180; //sec
     [System.NonSerialized]
     public static double timePlayed;
     
@@ -158,7 +158,7 @@ public class GameManager : MonoBehaviour
         
     }
 
-    //routine for time related messages
+    //routine for time based messages
     private IEnumerator TimeMessages()
     {
         var firstMoment = maxPlayTime / 2;
@@ -169,25 +169,26 @@ public class GameManager : MonoBehaviour
         
         //first message (at around half time)
         yield return new WaitForSeconds(firstMoment);
-        timeText.text = "Der Rave wartet nicht die ganze Nacht auf dich...";
+        timeText.text = "The rave doesn't wait all night for you...";
         timeText.enabled = true;
         yield return new WaitForSeconds(showMessageTime);
         timeText.enabled = false;
         
         //second message (at around three-quarter)
         yield return new WaitForSeconds(secondMoment);
-        timeText.text = "Beeil' dich, die Nacht ist bald vorbei...";
+        timeText.text = "Hurry up, the night will soon be over...";
         timeText.enabled = true;
         yield return new WaitForSeconds(showMessageTime);
         timeText.enabled = false;
 
         //third message (at last 20 seconds)
         yield return new WaitForSeconds(thirdMoment);
-        timeText.text = "Einige haben den Rave bereits verlassen...";
+        timeText.text = "Some have already left the rave....";
         timeText.enabled = true;
         yield return new WaitForSeconds(showMessageTime);
         timeText.enabled = false;
     }
+    
 
     void PartyFound()
     {
