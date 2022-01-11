@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1719437846135772504}
   - component: {fileID: 1719437846135772506}
   - component: {fileID: 3568634794093809420}
+  - component: {fileID: 8620647688663474806}
   m_Layer: 0
   m_Name: tree
   m_TagString: Untagged
@@ -118,7 +119,7 @@ MonoBehaviour:
   - {x: 0.03883934, y: -2.152544, z: 0}
   m_ShapePathHash: 1596462263
   m_Mesh: {fileID: 0}
-  m_InstanceId: 37070
+  m_InstanceId: 48318
 --- !u!114 &1719437846135772506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,3 +307,19 @@ PolygonCollider2D:
       - {x: 0.29, y: -2.1299999}
       - {x: 0.42, y: -2.1299999}
       - {x: 0.59999996, y: -2.09}
+--- !u!114 &8620647688663474806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719437846135772507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ee2fa3a2850543c3b3584d68f7a6238, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  setOnAwake: 1
+  shadowCaster: {fileID: 1719437846135772504}
+  edgeCollider: {fileID: 0}
+  polyCollider: {fileID: 3568634794093809420}

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2576814869734009228}
   - component: {fileID: 8149171020318810559}
   - component: {fileID: 6079578448281231680}
+  - component: {fileID: 889671689479124040}
   m_Layer: 0
   m_Name: bush
   m_TagString: Untagged
@@ -133,7 +134,7 @@ MonoBehaviour:
   - {x: -0.34501457, y: -1.8585682, z: 0}
   m_ShapePathHash: -1392153051
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1806
+  m_InstanceId: 49074
 --- !u!60 &6079578448281231680
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -276,3 +277,19 @@ PolygonCollider2D:
       - {x: -0.38, y: -1.8}
       - {x: -0.32999998, y: -1.7099999}
       - {x: -0.22, y: -1.74}
+--- !u!114 &889671689479124040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5989600314301251367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ee2fa3a2850543c3b3584d68f7a6238, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  setOnAwake: 1
+  shadowCaster: {fileID: 8149171020318810559}
+  edgeCollider: {fileID: 0}
+  polyCollider: {fileID: 6079578448281231680}
