@@ -14,7 +14,7 @@ public class PlayerScript : MonoBehaviour
     private Vector3 target;
 
     //Walk speed that can be set in Inspector
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float moveSpeed = 15f;
     private float speed;
 
 
