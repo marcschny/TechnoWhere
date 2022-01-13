@@ -36,6 +36,7 @@ public class EnemyScript : MonoBehaviour, IEnemy
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+        playerSeen = false;
         playerCaught = false;
 
 
@@ -73,29 +74,28 @@ public class EnemyScript : MonoBehaviour, IEnemy
         if (!agent.pathPending && !playerSeen && !distracted && agent.remainingDistance < 0.5f)
             GotoNextPoint();
 
-
+        //print("distracted: "+distracted.ToString()+" | seen: "+playerSeen.ToString()+" | caught: "+playerCaught.ToString());
 
 
         if (playerSeen && !distracted)
         {
             agent.SetDestination(player.transform.position);
 
-            if (agent.remainingDistance < 1f)
+            
+            if (Vector2.Distance(player.transform.position, transform.position) < 1.4f)
             {
                 Caught();
             }
 
-            if (agent.remainingDistance > 17.5f &&
-                agent.remainingDistance <
-                1000f) // sometimes it returns infinity during the calculation, therefore an upper limit
+            if (Vector2.Distance(player.transform.position, transform.position) > 24f) // sometimes it returns infinity during the calculation, therefore an upper limit
             {
                 Debug.Log("too far away");
-                Debug.Log(agent.remainingDistance);
                 playerSeen = false;
                 agent.speed = 3.5f;
                 GotoNextPoint();
             }
         }
+
     }
 
 
@@ -129,15 +129,18 @@ public class EnemyScript : MonoBehaviour, IEnemy
     public void onTrigger()
     {
         NavMeshHit hit;
-        if (!agent.Raycast(player.transform.position, out hit))
+        if (agent.Raycast(player.transform.position, out hit))
         {
-            Debug.Log(hit);
-            // Target is "visible" from our position.
-            playerSeen = true;
-            agent.speed = 6f;
-
-            Debug.Log("Player has been seen!");
+            Debug.Log("OnTrigger but NavMeshHit: "+hit.position+" on agent: "+agent.transform.position);
+            return;
         }
+        
+        // Target is "visible" from our position.
+        playerSeen = true;
+        agent.speed = 6f;
+
+        Debug.Log("Player has been seen!");
+        
     }
 
     public void onTriggerGlowStick(GameObject glowStick)

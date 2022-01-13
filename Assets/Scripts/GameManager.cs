@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     public GameObject partyFoundUI;
     
     //play time
-    public static int maxPlayTime = 180; //sec
+    public static int maxPlayTime = 90; //sec
     [System.NonSerialized]
     public static double timePlayed;
     

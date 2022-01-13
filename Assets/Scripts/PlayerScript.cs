@@ -76,12 +76,12 @@ public class PlayerScript : MonoBehaviour
 
     void Update()
     {
-        //Move Enemy
-        MoveInput();
+        
 
 
         if (enemy != null)
         {
+            Debug.Log("enemy != null");
             enemy.onTrigger();
             enemy = null;
         }
@@ -131,6 +131,12 @@ public class PlayerScript : MonoBehaviour
             return;
         }
 */
+        
+    }
+
+
+    private void Move()
+    {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
@@ -144,11 +150,7 @@ public class PlayerScript : MonoBehaviour
         {
             anim.enabled = false;
         }
-    }
-
-
-    private void Move()
-    {
+        
         rb.MovePosition(rb.position + movement.normalized * speed * Time.fixedDeltaTime);
 
         Vector2 lookDir = mousePos - rb.position;
