@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2455100411897116606}
   m_Layer: 0
   m_Name: bush2
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a966855c2b86f4155927dd8af5b209dd, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8929942, g: 1, b: 0.5716981, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -170,9 +170,9 @@ MonoBehaviour:
   - {x: -0.03, y: -1.2149999, z: 0}
   - {x: 0.089999996, y: -1.105, z: 0}
   - {x: 0.22, y: -0.97499996, z: 0}
-  m_ShapePathHash: 625924967
+  m_ShapePathHash: -250116877
   m_Mesh: {fileID: 0}
-  m_InstanceId: 63520
+  m_InstanceId: 70326
 --- !u!114 &80837491562594182
 MonoBehaviour:
   m_ObjectHideFlags: 0

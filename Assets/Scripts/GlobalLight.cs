@@ -11,6 +11,7 @@ public class GlobalLight : MonoBehaviour
     private double startIntensity = 0.16;
     private double maxIntensity = 0.42;
     private double intensityDiff;
+    private double timeDiff;
 
     private Color startColor;
     private Color endColor;
@@ -21,6 +22,7 @@ public class GlobalLight : MonoBehaviour
     {
         intensityDiff = maxIntensity - startIntensity;
         globalLight = gameObject.GetComponent<Light2D>();
+        globalLight.intensity = (float)startIntensity;
         startColor = new Color(0.6f,0.6f,0.6f,1.0f);
         endColor = new Color(1,0.6f,0.6f,1);
         //Debug.Log(globalLight.color);
@@ -31,8 +33,9 @@ public class GlobalLight : MonoBehaviour
     {
         if (GameManager.timePlayed > GameManager.maxPlayTime*0.66 && GameManager.timePlayed <= GameManager.maxPlayTime && globalLight.intensity <= maxIntensity)
         {
-            globalLight.intensity = (float)(startIntensity+((intensityDiff/GameManager.maxPlayTime*0.33)*GameManager.timePlayed));
-            //Debug.Log("intensity: "+globalLight.intensity.ToString());
+            timeDiff = GameManager.maxPlayTime - GameManager.timePlayed;
+            globalLight.intensity = (float) ((GameManager.timePlayed/(GameManager.maxPlayTime*1.33)) * maxIntensity);
+            Debug.Log("intensity "+globalLight.intensity);
             globalLight.color = Color.Lerp(startColor, endColor, (float)(GameManager.timePlayed/GameManager.maxPlayTime*0.33));
             //Debug.Log(globalLight.color.ToString());
         }

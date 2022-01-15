@@ -30,6 +30,7 @@ public class PartyFound : MonoBehaviour
 
     public void NextLevel()
     {
+        SceneManager.LoadScene("Level2"); //start level 2
         Debug.Log("next level");
     }
 

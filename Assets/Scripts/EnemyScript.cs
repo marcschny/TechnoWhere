@@ -29,6 +29,10 @@ public class EnemyScript : MonoBehaviour, IEnemy
 
     public Transform[] points;
     private int destPoint = 0;
+    
+    
+    NavMeshHit hit;
+    private RaycastHit2D hitt;
 
 
     void Start()
@@ -49,9 +53,12 @@ public class EnemyScript : MonoBehaviour, IEnemy
 
     void Update()
     {
+        
+        
         if (selected)
         {
-            // To debug individual enemy
+            //NavMeshHit hit;
+            //Debug.Log(agent.Raycast(player.transform.position, out hit));
         }
 
         //Debug.DrawLine(transform.position, player.transform.position, Color.red);
@@ -128,16 +135,23 @@ public class EnemyScript : MonoBehaviour, IEnemy
 
     public void onTrigger()
     {
+        hitt = Physics2D.Raycast(transform.position, player.transform.position);
         NavMeshHit hit;
+
         if (agent.Raycast(player.transform.position, out hit))
         {
-            Debug.Log("OnTrigger but NavMeshHit: "+hit.position+" on agent: "+agent.transform.position);
-            return;
+            if (hitt != null && hitt.collider.tag == "Enenmy")
+            {
+                return;
+            }
         }
-        
+
+
         // Target is "visible" from our position.
         playerSeen = true;
         agent.speed = 6f;
+        
+        //Debug.Log(hitt.collider.name+" - "+ hitt.transform.tag+" at "+hitt.point+" (distance: "+hitt.distance+")");
 
         Debug.Log("Player has been seen!");
         
@@ -145,18 +159,22 @@ public class EnemyScript : MonoBehaviour, IEnemy
 
     public void onTriggerGlowStick(GameObject glowStick)
     {
+        hitt = Physics2D.Raycast(transform.position, player.transform.position);
         NavMeshHit hit;
 
-        this.glowStick = glowStick;
-
-        if (!agent.Raycast(this.glowStick.transform.position, out hit))
+        if (agent.Raycast(player.transform.position, out hit))
         {
-            Debug.Log(hit);
-            // Target is "visible" from our position.
-            StartCoroutine(Distraction());
-
-            Debug.Log("Glowstick has been seen!");
+            if (hitt != null && hitt.collider.tag == "Enenmy")
+            {
+                return;
+            }
         }
+
+        Debug.Log(hit);
+        // Target is "visible" from our position.
+        StartCoroutine(Distraction());
+
+        Debug.Log("Glowstick has been seen!");
     }
 
 
