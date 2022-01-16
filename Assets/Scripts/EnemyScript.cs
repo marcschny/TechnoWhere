@@ -127,10 +127,7 @@ public class EnemyScript : MonoBehaviour, IEnemy
         
         distracted = true;
         agent.SetDestination(glowStick.transform.position);
-        Debug.Log("going to glowstick");
-        Debug.Log(distractedTime);
         yield return new WaitForSeconds(distractedTime);
-        Debug.Log("after yield");
 
         Destroy(glowStick);
 
