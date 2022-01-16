@@ -89,7 +89,6 @@ public class GameManager : MonoBehaviour
             // show/hide glowsticks
             for(int i=0; i<glowSticks.Length-noGlowSticks; i++){
                 glowSticks[i].SetActive(false);
-                //Debug.Log("gs["+i+"]: "+glowSticks[i].activeSelf);
             }
 
 

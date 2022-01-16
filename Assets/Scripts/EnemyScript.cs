@@ -16,7 +16,7 @@ public class EnemyScript : MonoBehaviour, IEnemy
     private int randomSpot;
 
     private Animator anim;
-    private float rotationSpeed = 300f;
+    private float rotationSpeed = 280f;
     private bool playerSeen;
     public static bool playerCaught;
     private bool distracted;
@@ -94,11 +94,11 @@ public class EnemyScript : MonoBehaviour, IEnemy
                 Caught();
             }
 
-            if (Vector2.Distance(player.transform.position, transform.position) > 24f) // sometimes it returns infinity during the calculation, therefore an upper limit
+            if (Vector2.Distance(player.transform.position, transform.position) > 24f)
             {
                 Debug.Log("too far away");
                 playerSeen = false;
-                agent.speed = 3.5f;
+                agent.speed = 4.5f;
                 GotoNextPoint();
             }
         }
@@ -149,7 +149,7 @@ public class EnemyScript : MonoBehaviour, IEnemy
 
         // Target is "visible" from our position.
         playerSeen = true;
-        agent.speed = 6f;
+        agent.speed = 6.8f;
         
         //Debug.Log(hitt.collider.name+" - "+ hitt.transform.tag+" at "+hitt.point+" (distance: "+hitt.distance+")");
 

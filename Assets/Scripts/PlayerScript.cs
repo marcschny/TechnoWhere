@@ -14,7 +14,7 @@ public class PlayerScript : MonoBehaviour
     private Vector3 target;
 
     //Walk speed that can be set in Inspector
-    [SerializeField] private float moveSpeed = 15f;
+    [SerializeField] private float moveSpeed = 6f;
     private float speed;
 
 
@@ -24,7 +24,7 @@ public class PlayerScript : MonoBehaviour
     Vector2 movement;
     Vector2 mousePos;
 
-    private float rotationSpeed = 300f;
+    private float rotationSpeed = 280f;
 
     //boost
     private float startBoostTime = 0f;
@@ -81,7 +81,6 @@ public class PlayerScript : MonoBehaviour
 
         if (enemy != null)
         {
-            Debug.Log("enemy != null");
             enemy.onTrigger();
             enemy = null;
         }

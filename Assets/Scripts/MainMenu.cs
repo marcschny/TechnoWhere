@@ -29,7 +29,7 @@ public class MainMenu : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         intro1.SetActive(true);
-        yield return new WaitForSeconds(15);
+        yield return new WaitForSeconds(16);
         intro1.SetActive(false);
         yield return new WaitForSeconds(1);
         intro2.SetActive(true);
@@ -39,7 +39,6 @@ public class MainMenu : MonoBehaviour
 
     public void LoadScene()
     {
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         SceneManager.LoadScene("Level1");
     }
 

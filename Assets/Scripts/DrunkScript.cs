@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -74,7 +70,6 @@ public class DrunkScript : MonoBehaviour
         if (Vector2.Distance(currentCenter, targetCenter) < 0.002f)
         {
             targetCenter = GetNewTargetCenter();
-            Debug.Log(targetCenter);
         }
     }
 

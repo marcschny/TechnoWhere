@@ -35,9 +35,7 @@ public class GlobalLight : MonoBehaviour
         {
             timeDiff = GameManager.maxPlayTime - GameManager.timePlayed;
             globalLight.intensity = (float) ((GameManager.timePlayed/(GameManager.maxPlayTime*1.33)) * maxIntensity);
-            Debug.Log("intensity "+globalLight.intensity);
             globalLight.color = Color.Lerp(startColor, endColor, (float)(GameManager.timePlayed/GameManager.maxPlayTime*0.33));
-            //Debug.Log(globalLight.color.ToString());
         }
 
     }
