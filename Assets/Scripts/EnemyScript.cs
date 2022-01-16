@@ -123,9 +123,15 @@ public class EnemyScript : MonoBehaviour, IEnemy
 
     private IEnumerator Distraction()
     {
+        
+        
         distracted = true;
         agent.SetDestination(glowStick.transform.position);
+        Debug.Log("going to glowstick");
+        Debug.Log(distractedTime);
         yield return new WaitForSeconds(distractedTime);
+        Debug.Log("after yield");
+
         Destroy(glowStick);
 
         distracted = false;
@@ -161,6 +167,9 @@ public class EnemyScript : MonoBehaviour, IEnemy
     {
         hitt = Physics2D.Raycast(transform.position, player.transform.position);
         NavMeshHit hit;
+        
+        this.glowStick = glowStick;
+
 
         if (agent.Raycast(player.transform.position, out hit))
         {

@@ -11,7 +11,7 @@ public class SoundScript : MonoBehaviour
     private float distance;
 
     private float invLerp;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,14 +22,11 @@ public class SoundScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         distance = Vector2.Distance(transform.position, player.transform.position);
 
         invLerp = Mathf.InverseLerp(50, 10, distance);
         lowPassFilter.cutoffFrequency = Mathf.Lerp(128, 5000, invLerp);
 
         lowPassFilter.enabled = !(distance <= 10);
-
-
     }
 }
