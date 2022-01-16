@@ -24,7 +24,6 @@ public class PlayerScript : MonoBehaviour
     Vector2 movement;
     Vector2 mousePos;
 
-    private float rotationSpeed = 280f;
 
     //boost
     private float startBoostTime = 0f;
